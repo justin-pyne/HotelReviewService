@@ -1,0 +1,52 @@
+name: Tests
+'on':
+  - push
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: SearchByWordTest
+        id: searchbywordtest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: SearchByWordTest
+          command: mvn -B test -Dtest=SearchByWordTest
+          timeout: 10
+          max-score: 20
+      - name: SearchHotelTest
+        id: searchhoteltest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: SearchHotelTest
+          command: mvn -B test -Dtest=SearchHotelTest
+          timeout: 10
+          max-score: 10
+      - name: SearchInvalidQueriesTest
+        id: searchinvalidqueriestest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: SearchInvalidQueriesTest
+          command: mvn -B test -Dtest=SearchInvalidQueriesTest
+          timeout: 10
+          max-score: 5
+      - name: SearchReviewsTest
+        id: searchreviewstest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: SearchReviewsTest
+          command: mvn -B test -Dtest=SearchReviewsTest
+          timeout: 10
+          max-score: 15

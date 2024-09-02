@@ -1,0 +1,27 @@
+{
+  "q": "San Francisco",
+  "rid": "d7f1291d-331b-4a07-a456-f2852035f9c5",
+  "rc": "OK",
+  "sr": [
+    {
+      "@type": "hotelResult",
+      "i": "1",
+      "f": "Hilton San Francisco Union Square",
+      "d": "Hilton <B>San</B> <B>Francisco</B> Union Square",
+      "id": "25622",
+      "t": "HOTEL",
+      "ll": {
+        "lat": "37.786160",
+        "lng": "-122.410180"
+      },
+      "a": "QSF",
+      "amc": "178305",
+      "ad": "333 O'Farrell St.",
+      "ci": "San Francisco",
+      "pr": "CA",
+      "c": "USA",
+      "cc": "US",
+      "ccc": "USA"
+    }
+  ]
+}

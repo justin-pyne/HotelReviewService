@@ -1,0 +1,38 @@
+{
+ "reviewDetails": {
+  "reviewCollection": {
+   "review": [
+    {
+     "hotelId": "25622",
+     "reviewId": "23d756a64672vr2gwegyhqw4",
+     "ratingOverall": 5,
+     "userNickname": "Chris",
+     "title": "Great deal",
+     "reviewText": "Loved the neighborhood, very lively",
+     "reviewSubmissionDate": "2014-09-05",
+     "isRecommended": "YES"
+    },
+    {
+     "hotelId": "25622",
+     "reviewId": "57b717a44751ca0b791823b2",
+     "ratingOverall": 4,
+     "userNickname": "Xiaofeng",
+     "title": "Room too small",
+     "reviewText": "Great location, but the room is too small",
+     "reviewSubmissionDate": "2015-03-04",
+     "isRecommended": "YES"
+    },
+    {
+     "hotelId": "25622",
+     "reviewId": "92rlnlvnabuwbf256jsf20fj",
+     "ratingOverall": 3,
+     "userNickname": "Alicia",
+     "title": "Overpriced",
+     "reviewText": "Good location, but very expensive",
+     "reviewSubmissionDate": "2014-09-05",
+     "isRecommended": "YES"
+    }
+   ]
+  }
+ }
+}
