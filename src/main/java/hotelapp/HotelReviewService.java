@@ -5,6 +5,7 @@ public class HotelReviewService {
     // Add additional classes - do not put all the code in this one class, this would be a bad design
 
     /**
+     *
      * Parse given arguments that contain paths to the hotel file and the reviews folder,
      * and load hotel and review data into the corresponding data structures.
      * Do not store data structures (maps) in this class and do not do the actual parsing in this class,
