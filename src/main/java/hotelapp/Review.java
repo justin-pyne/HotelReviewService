@@ -28,4 +28,17 @@ public class Review {
     public Date getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "hotelId='" + hotelId + '\'' +
+                ", reviewId='" + reviewId + '\'' +
+                ", rating='" + rating + '\'' +
+                ", reviewTitle='" + reviewTitle + '\'' +
+                ", reviewText='" + reviewText + '\'' +
+                ", userName='" + userName + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

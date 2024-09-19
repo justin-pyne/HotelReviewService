@@ -22,4 +22,16 @@ public class Hotel {
     public String getHotelId() {
         return hotelId;
     }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "name='" + name + '\'' +
+                ", hotelId='" + hotelId + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
