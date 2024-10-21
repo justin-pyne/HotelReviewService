@@ -2,12 +2,12 @@ package hotelapp;
 
 public class Hotel {
 
-    private String name;
-    private String hotelId;
-    private String longitude;
-    private String latitude;
-    private String address;
-    private String city;
+    private final String name;
+    private final String hotelId;
+    private final String longitude;
+    private final String latitude;
+    private final String address;
+    private final String city;
 
 
     public Hotel(String name, String hotelId, String longitude, String latitude, String address, String city) {
@@ -25,13 +25,10 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel{" +
-                "name='" + name + '\'' +
-                ", hotelId='" + hotelId + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                '}';
+        return "hotelName = " + name + System.lineSeparator() +
+                "hotelId = " + hotelId + System.lineSeparator() +
+                "latitude = " + latitude + System.lineSeparator() +
+                "longitude = " + longitude + System.lineSeparator() +
+                "address = " + address + ", " + city + System.lineSeparator();
     }
 }
