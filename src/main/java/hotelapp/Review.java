@@ -1,7 +1,6 @@
 package hotelapp;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Review {
     private final String hotelId;
