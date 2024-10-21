@@ -1,31 +1,40 @@
 package hotelapp;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Review {
-    private String hotelId;
-    private String reviewId;
-    private String rating;
-    private String reviewTitle;
-    private String reviewText;
-    private String userName;
-    private Date date;
+    private final String hotelId;
+    private final String reviewId;
+    private final double rating;
+    private final String reviewTitle;
+    private final String reviewText;
+    private final String userName;
+    private final LocalDate date;
 
-    public Review(String hotelId, String reviewId, String rating, String reviewTitle, String reviewText, String userName, Date date) {
+    public Review(String hotelId, String reviewId, double rating, String reviewTitle, String reviewText, String userName, String date) {
         this.hotelId = hotelId;
         this.reviewId = reviewId;
         this.rating = rating;
         this.reviewTitle = reviewTitle;
         this.reviewText = reviewText;
         this.userName = userName;
-        this.date = date;
+        this.date = LocalDate.parse(date);
+    }
+
+    public String getHotelId() {
+        return hotelId;
+    }
+
+    public String getReviewText() {
+        return reviewText;
     }
 
     public String getReviewId() {
         return reviewId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
