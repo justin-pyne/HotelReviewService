@@ -1,9 +1,12 @@
 package hotelapp;
 
-public class HotelReviewService {
-    // Add variables as needed - must be non-static
-    // Add additional classes - do not put all the code in this one class, this would be a bad design
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+public class HotelReviewService {
+    private HotelManager hotelManager;
+    private ReviewManager reviewManager;
     /**
      *
      * Parse given arguments that contain paths to the hotel file and the reviews folder,
@@ -17,8 +20,37 @@ public class HotelReviewService {
      *  -reviews pathToReviewsFolder -hotels pathToHotelFile
      */
     public void loadData(String[] args) {
-       // FILL IN CODE to load data from json files
+        Map<String, String> argsMap = new HashMap<>();
 
+        if (args.length == 0) {
+            System.out.println("Missing arguments.");
+            return;
+        }
+
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].startsWith("-")) {
+                if (i + 1 < args.length && !args[i + 1].startsWith("-")) {
+                    argsMap.put(args[i], args[i + 1]);
+                    i++;
+                } else {
+                    System.out.println("Unexpected or missing value for flag:" + args[i]);
+                    return;
+                }
+            } else {
+                System.out.println("Unexpected argument: " + args[i]);
+                return;
+            }
+        }
+        JsonProcessor js = new JsonProcessor();
+        if (argsMap.containsKey("-hotels")){
+            List<Hotel> hotels = js.parseHotel(argsMap.get("-hotels"));
+            this.hotelManager = new HotelManager(hotels);
+        }
+
+        if (argsMap.containsKey("-reviews")){
+            List<Review> reviews = js.parseReviews(argsMap.get("-reviews"));
+            this.reviewManager = new ReviewManager(reviews);
+        }
     }
 
     /**
@@ -30,13 +62,18 @@ public class HotelReviewService {
      * @return String, the result of the query
      */
     public String processQuery(String query) {
-        // FILL IN CODE to process three types of queries:
-        // findHotel hotelId
-        // findReviews hotelId
-        // findWord word
-        // Refer to the project description for details
+        String[] queries = query.split(" ", 2);
+        String method = queries[0];
 
-        return "";
+        if (method.equals("findHotel") && queries.length == 2){
+            return hotelManager.findHotel(queries[1]);
+        } else if (method.equals("findReviews") && queries.length == 2){
+            return reviewManager.findReviews(queries[1]);
+        } else if (method.equals("findWord") && queries.length == 2){
+            return reviewManager.findWord(queries[1]);
+        }
+
+        throw new IllegalArgumentException();
     }
 
     public static void main(String[] args) {
@@ -55,7 +92,7 @@ public class HotelReviewService {
 
         }
         catch(Exception e) {
-            System.out.println("Could not load data or process a query.");
+            System.out.println("Could not load data or process a query." + e.getMessage());
         }
     }
 

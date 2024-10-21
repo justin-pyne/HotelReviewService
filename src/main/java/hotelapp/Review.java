@@ -40,14 +40,13 @@ public class Review {
 
     @Override
     public String toString() {
-        return "Review{" +
-                "hotelId='" + hotelId + '\'' +
-                ", reviewId='" + reviewId + '\'' +
-                ", rating='" + rating + '\'' +
-                ", reviewTitle='" + reviewTitle + '\'' +
-                ", reviewText='" + reviewText + '\'' +
-                ", userName='" + userName + '\'' +
-                ", date=" + date +
-                '}';
+        return "hotelId = " + hotelId + System.lineSeparator() +
+                "reviewId = " + reviewId + System.lineSeparator() +
+                "averageRating = " + rating + System.lineSeparator() +
+                "title = " + reviewTitle + System.lineSeparator() +
+                "reviewText = " + reviewText + System.lineSeparator() +
+                "userNickname = " + userName + System.lineSeparator() +
+                "submissionDate = " + date + System.lineSeparator() +
+                "--------------------" + System.lineSeparator();
     }
 }
