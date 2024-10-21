@@ -8,8 +8,8 @@ public class ReviewManager {
 
 
     public ReviewManager(List<Review> reviews) {
-        for(Review review : reviews) {
-            if(!reviewMap.containsKey(review.getHotelId())) {
+        for (Review review : reviews) {
+            if (!reviewMap.containsKey(review.getHotelId())) {
                 reviewMap.put(review.getHotelId(), new ArrayList<>());
             }
             reviewMap.get(review.getHotelId()).add(review);
@@ -18,7 +18,7 @@ public class ReviewManager {
     }
 
     public String findReviews(String hotelId){
-        if(!reviewMap.containsKey(hotelId)) {
+        if (!reviewMap.containsKey(hotelId)) {
             throw new IllegalArgumentException();
         }
 
@@ -41,11 +41,31 @@ public class ReviewManager {
     }
 
     public String findWord(String word){
-
+        word = word.toLowerCase();
+        if (!invertedIndex.containsKey(word)) {
+            return "";
+        }
+        StringBuilder result = new StringBuilder();
+        for (ReviewWithFrequency reviewWithFrequency : invertedIndex.get(word)) {
+            result.append(reviewWithFrequency.toString());
+        }
+        return result.toString();
     }
 
     private void invertedIndexReview(Review review) {
+        String[] words = review.getReviewText().toLowerCase().split("[,;!\\. ]");
 
+        Map<String, Integer> wordCount = new HashMap<>();
+        for (String word : words) {
+            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+        }
+
+        for (String word : wordCount.keySet()) {
+            int frequency = wordCount.get(word);
+            ReviewWithFrequency reviewWithFrequency = new ReviewWithFrequency(review, frequency);
+
+            invertedIndex.computeIfAbsent(word, v -> new TreeSet<>()).add(reviewWithFrequency);
+        }
     }
 
 }
