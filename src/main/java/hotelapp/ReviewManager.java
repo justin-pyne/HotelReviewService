@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 public class ReviewManager {
     private Map<String, List<Review>> reviewMap = new HashMap<>();
-    private Map<String, TreeMap<Integer, List<Review>>> wordMap = new HashMap<>();
+    private Map<String, TreeSet<ReviewWithFrequency>> invertedIndex = new HashMap<>();
 
 
     public String findReviews(String hotelId){
